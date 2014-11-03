@@ -47,6 +47,9 @@ class ConnectApp
           if (!stoped)
             stoped = true
             @log "Server stopped"
+            process.nextTick( ->
+              process.exit(0);
+            )
 
         server.on "connection", (socket) =>
           sockets.push socket
